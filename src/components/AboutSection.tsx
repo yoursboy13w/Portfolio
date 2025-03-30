@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { setupScrollReveal, generateAISummary } from '../utils/animations';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import himal from "../assets/himal.jpg";
 
 const AboutSection: React.FC = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -71,7 +72,7 @@ const AboutSection: React.FC = () => {
               
               <div className="flex flex-col md:flex-row items-center gap-8 mb-6">
                 <Avatar className="w-32 h-32 border-2 border-cyber-blue/30 p-1 cyber-glow ">
-                  <AvatarImage    className="rounded-full"  src="https://himalshahithakuri.com.np/assets/himal.jpg" alt="Himal Shahi Thakuri" />
+                  <AvatarImage    className="rounded-full"  src={himal} alt="Himal Shahi Thakuri" />
                   <AvatarFallback className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-purple">HS</AvatarFallback>
                 </Avatar>
                 
