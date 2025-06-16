@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { setupScrollReveal, generateAISummary } from '../utils/animations';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import himal from "../assets/himal.jpg";
 
 const AboutSection: React.FC = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
