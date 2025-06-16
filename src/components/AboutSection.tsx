@@ -1,7 +1,11 @@
+// AboutSection.tsx
 
 import React, { useEffect, useRef, useState } from 'react';
 import { setupScrollReveal, generateAISummary } from '../utils/animations';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+// ✅ Import your image
+import himalImage from '../assets/himal.jpg'; // <-- Make sure this path is correct
 
 const AboutSection: React.FC = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -9,47 +13,22 @@ const AboutSection: React.FC = () => {
   
   useEffect(() => {
     observerRef.current = setupScrollReveal();
-    
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
+    return () => observerRef.current?.disconnect();
   }, []);
   
   const handleGenerateAISummary = () => {
     const summary = generateAISummary();
     setAiSummary(summary);
   };
-  
+
   const timelineEvents = [
-    {
-      year: '2018',
-      title: 'Started Tech Journey',
-      description: 'Began exploring programming and technology fundamentals.'
-    },
-    {
-      year: '2020',
-      title: 'Full Stack Development',
-      description: 'Mastered modern web technologies and frameworks.'
-    },
-    {
-      year: '2021',
-      title: 'AI & ML Focus',
-      description: 'Shifted focus to artificial intelligence and machine learning.'
-    },
-    {
-      year: '2022',
-      title: 'Time Tales Founded',
-      description: 'Created innovative solutions with cutting-edge technology.'
-    },
-    {
-      year: '2023',
-      title: 'Advanced AI Projects',
-      description: 'Developed sophisticated AI-powered applications.'
-    }
+    { year: '2018', title: 'Started Tech Journey', description: 'Began exploring programming and technology fundamentals.' },
+    { year: '2020', title: 'Full Stack Development', description: 'Mastered modern web technologies and frameworks.' },
+    { year: '2021', title: 'AI & ML Focus', description: 'Shifted focus to artificial intelligence and machine learning.' },
+    { year: '2022', title: 'Time Tales Founded', description: 'Created innovative solutions with cutting-edge technology.' },
+    { year: '2023', title: 'Advanced AI Projects', description: 'Developed sophisticated AI-powered applications.' }
   ];
-  
+
   return (
     <section id="about" className="relative py-24 px-6 overflow-hidden bg-cyber-gradient">
       <div className="absolute inset-0 cyber-grid-bg opacity-10"></div>
@@ -64,14 +43,15 @@ const AboutSection: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column */}
           <div className="scroll-reveal">
             <div className="glass-panel p-8 relative">
               <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-cyber-blue"></div>
               <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-cyber-blue"></div>
               
               <div className="flex flex-col md:flex-row items-center gap-8 mb-6">
-                <Avatar className="w-32 h-32 border-2 border-cyber-blue/30 p-1 cyber-glow ">
-                  <AvatarImage    className="rounded-full"  src={himal} alt="Himal Shahi Thakuri" />
+                <Avatar className="w-32 h-32 border-2 border-cyber-blue/30 p-1 cyber-glow">
+                  <AvatarImage className="rounded-full" src={himalImage} alt="Himal Shahi Thakuri" />
                   <AvatarFallback className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue to-cyber-purple">HS</AvatarFallback>
                 </Avatar>
                 
@@ -85,32 +65,30 @@ const AboutSection: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <p className="text-lg leading-relaxed mb-6 text-white">
-  I'm <span className="text-cyan-400 font-semibold">Himal Shahi Thakuri</span>, a passionate tech enthusiast specializing in 
-  <span className="text-green-400 font-semibold"> AI, ML, and Full-Stack Development</span>. My journey began with a curiosity about how 
-  <span className="text-purple-400 font-semibold">technology</span> could reshape our world, leading me to explore diverse domains within the 
-  <span className="text-yellow-400 font-semibold">digital landscape</span>.
-</p>
+                I'm <span className="text-cyan-400 font-semibold">Himal Shahi Thakuri</span>, a passionate tech enthusiast specializing in 
+                <span className="text-green-400 font-semibold"> AI, ML, and Full-Stack Development</span>. My journey began with a curiosity about how 
+                <span className="text-purple-400 font-semibold">technology</span> could reshape our world, leading me to explore diverse domains within the 
+                <span className="text-yellow-400 font-semibold">digital landscape</span>.
+              </p>
 
-<p className="text-lg leading-relaxed mb-6 text-white">
-  With expertise in both <span className="text-red-400 font-semibold">frontend</span> and <span className="text-red-400 font-semibold">backend</span> technologies, I create 
-  <span className="text-blue-400 font-semibold"> seamless, responsive, and intuitive</span> interfaces. My focus has expanded to 
-  <span className="text-green-400 font-semibold"> AI and Machine Learning</span>, where I develop <span className="text-purple-400 font-semibold">intelligent solutions</span> 
-  that adapt and evolve.
-</p>
+              <p className="text-lg leading-relaxed mb-6 text-white">
+                With expertise in both <span className="text-red-400 font-semibold">frontend</span> and <span className="text-red-400 font-semibold">backend</span> technologies, I create 
+                <span className="text-blue-400 font-semibold"> seamless, responsive, and intuitive</span> interfaces. My focus has expanded to 
+                <span className="text-green-400 font-semibold"> AI and Machine Learning</span>, where I develop <span className="text-purple-400 font-semibold">intelligent solutions</span> 
+                that adapt and evolve.
+              </p>
 
-<p className="text-lg leading-relaxed text-white">
-  As a <span className="text-orange-400 font-semibold">Cyber Futurist</span>, I'm constantly exploring the intersection of 
-  <span className="text-indigo-400 font-semibold">emerging technologies</span> and their potential to transform industries. 
-  I believe in creating technology that is not just functional but also 
-  <span className="text-green-400 font-semibold"> ethical</span>, 
-  <span className="text-cyan-400 font-semibold">accessible</span>, and 
-  <span className="text-red-400 font-semibold">futuristic</span>.
-</p>
+              <p className="text-lg leading-relaxed text-white">
+                As a <span className="text-orange-400 font-semibold">Cyber Futurist</span>, I'm constantly exploring the intersection of 
+                <span className="text-indigo-400 font-semibold">emerging technologies</span> and their potential to transform industries. 
+                I believe in creating technology that is not just functional but also 
+                <span className="text-green-400 font-semibold"> ethical</span>, 
+                <span className="text-cyan-400 font-semibold">accessible</span>, and 
+                <span className="text-red-400 font-semibold">futuristic</span>.
+              </p>
 
-
-              
               {aiSummary && (
                 <div className="mt-6 p-4 bg-cyber-blue/10 border border-cyber-blue/30 rounded-md">
                   <h4 className="text-cyber-blue font-semibold mb-2">AI-Generated Summary:</h4>
@@ -130,13 +108,12 @@ const AboutSection: React.FC = () => {
               </button>
             </div>
           </div>
-          
+
+          {/* Right Column - Timeline */}
           <div className="scroll-reveal" style={{ transitionDelay: '0.2s' }}>
             <div className="glass-panel p-8 relative">
               <div className="absolute top-0 left-0 h-full w-1 bg-gradient-to-b from-cyber-blue to-cyber-purple"></div>
-              
               <h3 className="text-2xl font-semibold mb-8 neon-text">Experience Timeline</h3>
-              
               <div className="space-y-8">
                 {timelineEvents.map((event, index) => (
                   <div key={index} className="relative pl-8">
@@ -150,6 +127,7 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
